@@ -8,14 +8,10 @@ describe('login', () => {
 
     context('quando submeto o formulário', () => {
       it.only('deve logar com sucesso', () => {
-          
-          // dado que eu tenho um NOVO usuário cadastrado
           const user = data.success
-
-          // quando submeto o form de login com esse usuário
+          cy.createUser(user)
+         
           loginPage.submit(user.email, user.password)
-
-          // então devo ser logado com sucesso
           shaversPage.header.userShouldBeloggedIn(user.name)
       })
 
